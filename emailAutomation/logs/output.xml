@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 4.0.3 (Python 3.9.5 on win32)" generated="20210803 21:35:20.584" rpa="false" schemaversion="2">
+<suite id="s1" name="zoombaEmail" source="C:\Repository\Zoomba\emailAutomation\tests\zoombaEmail.robot">
+<kw name="Start App" type="SETUP">
+<doc>Sets up the application for quick launching through 'Launch Application' and starts the winappdriver</doc>
+<kw name="Driver Setup" library="Zoomba.DesktopLibrary">
+<doc>Starts the WinAppDriver.</doc>
+<status status="PASS" starttime="20210803 21:35:21.616" endtime="20210803 21:35:21.675"/>
+</kw>
+<kw name="Open Application" library="Zoomba.DesktopLibrary">
+<arg>${REMOTE_URL}</arg>
+<arg>platformName=Windows</arg>
+<arg>deviceName=Windows</arg>
+<arg>app=${APP}</arg>
+<doc>Opens a new application to given Appium server.
+If your application has a splash screen please supply the window name of the final window that will appear.
+For the capabilities of appium server and Windows please check http://appium.io/docs/en/drivers/windows</doc>
+<status status="PASS" starttime="20210803 21:35:21.675" endtime="20210803 21:35:23.826"/>
+</kw>
+<kw name="Maximize Window" library="Zoomba.DesktopLibrary">
+<doc>Maximizes the current application window.</doc>
+<status status="PASS" starttime="20210803 21:35:23.826" endtime="20210803 21:35:23.843"/>
+</kw>
+<kw name="Quit Application" library="Zoomba.DesktopLibrary">
+<doc>Quit application. Application can be quit while Appium session is kept alive.
+This keyword can be used to close application during test case or between test cases.</doc>
+<status status="PASS" starttime="20210803 21:35:23.843" endtime="20210803 21:35:23.876"/>
+</kw>
+<status status="PASS" starttime="20210803 21:35:21.616" endtime="20210803 21:35:23.876"/>
+</kw>
+<test id="s1-t1" name="Enviando Novo Email Com Massa de Dados Via JSON">
+<kw name="Launch Application" library="Zoomba.DesktopLibrary" type="SETUP">
+<doc>Launch application. Application can be launched while Appium session running.
+This keyword can be used to launch application during test case or between test cases.</doc>
+<status status="PASS" starttime="20210803 21:35:23.886" endtime="20210803 21:35:25.161"/>
+</kw>
+<kw name="Create List" library="BuiltIn">
+<var>@{emailsToSent}</var>
+<doc>Returns a list containing given items.</doc>
+<msg timestamp="20210803 21:35:25.163" level="INFO">@{emailsToSent} = [ ]</msg>
+<status status="PASS" starttime="20210803 21:35:25.163" endtime="20210803 21:35:25.163"/>
+</kw>
+<kw name="Wait Until Element Contains" library="Zoomba.DesktopLibrary">
+<arg>class=ListItem</arg>
+<arg>jeremias.araujo@db1.com</arg>
+<doc>Waits until element specified with ``locator`` contains ``text``.</doc>
+<msg timestamp="20210803 21:35:25.359" level="INFO">Verifying element '&lt;appium.webdriver.webelement.WebElement (session="102BA513-1AF6-45D5-8390-D868434D9EF2", element="42.920586.4.37")&gt;' contains text 'jeremias.araujo@db1.com'.</msg>
+<status status="PASS" starttime="20210803 21:35:25.163" endtime="20210803 21:35:25.367"/>
+</kw>
+<kw name="Wait For And Click Element" library="Zoomba.DesktopLibrary">
+<arg>accessibility_id=NewButton</arg>
+<doc>Wait for and click the element identified by ``locator``.</doc>
+<msg timestamp="20210803 21:35:25.526" level="INFO">Clicking element 'accessibility_id=NewButton'.</msg>
+<status status="PASS" starttime="20210803 21:35:25.368" endtime="20210803 21:35:25.792"/>
+</kw>
+<kw name="Send New Email By JSON" library="sendByJSON">
+<arg>emailData.json</arg>
+<kw name="Get JSON" library="helpers">
+<var>${fixture}</var>
+<arg>${jsonfile}</arg>
+<kw name="Get File" library="OperatingSystem">
+<var>${file}</var>
+<arg>${EXECDIR}/resources/fixture/${filen_name}</arg>
+<doc>Returns the contents of a specified file.</doc>
+<msg timestamp="20210803 21:35:25.794" level="INFO" html="true">Getting file '&lt;a href="file://C:\Repository\Zoomba\emailAutomation\resources\fixture\emailData.json"&gt;C:\Repository\Zoomba\emailAutomation\resources\fixture\emailData.json&lt;/a&gt;'.</msg>
+<msg timestamp="20210803 21:35:25.797" level="INFO">${file} = {
+    "sentTo": [
+        {
+            "name": "Jeremias Araújo",
+            "email": "jqcaraujo@gmail.com"
+        },
+        {
+            "name": "Jeremias Queiroga",
+            "email": "jqcara...</msg>
+<status status="PASS" starttime="20210803 21:35:25.793" endtime="20210803 21:35:25.797"/>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<var>${jsonObject}</var>
+<arg>json.loads($file)</arg>
+<arg>json</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<msg timestamp="20210803 21:35:25.800" level="FAIL">Evaluating expression 'json.loads($file)' failed: JSONDecodeError: Invalid control character at: line 17 column 71 (char 480)</msg>
+<status status="FAIL" starttime="20210803 21:35:25.797" endtime="20210803 21:35:25.801"/>
+</kw>
+<status status="FAIL" starttime="20210803 21:35:25.793" endtime="20210803 21:35:25.801"/>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<var>${subject}</var>
+<arg>${fixture['subject']}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" starttime="20210803 21:35:25.801" endtime="20210803 21:35:25.801"/>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<var>${bodyText}</var>
+<arg>${fixture['body']}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" starttime="20210803 21:35:25.801" endtime="20210803 21:35:25.801"/>
+</kw>
+<kw name="Create Email List To Send By List" library="sendByJSON">
+<var>${listToSend}</var>
+<arg>${fixture}</arg>
+<status status="NOT RUN" starttime="20210803 21:35:25.801" endtime="20210803 21:35:25.801"/>
+</kw>
+<kw name="Fill List To Sent" library="sendByJSON">
+<arg>${listToSend}</arg>
+<status status="NOT RUN" starttime="20210803 21:35:25.801" endtime="20210803 21:35:25.802"/>
+</kw>
+<kw name="Fill Subject TextBox" library="sendByJSON">
+<arg>${subject}</arg>
+<status status="NOT RUN" starttime="20210803 21:35:25.802" endtime="20210803 21:35:25.802"/>
+</kw>
+<kw name="Fill Email Body" library="sendByJSON">
+<arg>${bodyText}</arg>
+<status status="NOT RUN" starttime="20210803 21:35:25.802" endtime="20210803 21:35:25.802"/>
+</kw>
+<kw name="Click Send Email" library="sendByJSON">
+<status status="NOT RUN" starttime="20210803 21:35:25.802" endtime="20210803 21:35:25.802"/>
+</kw>
+<status status="FAIL" starttime="20210803 21:35:25.792" endtime="20210803 21:35:25.802"/>
+</kw>
+<kw name="Quit Application" library="Zoomba.DesktopLibrary" type="TEARDOWN">
+<doc>Quit application. Application can be quit while Appium session is kept alive.
+This keyword can be used to close application during test case or between test cases.</doc>
+<status status="PASS" starttime="20210803 21:35:25.803" endtime="20210803 21:35:25.818"/>
+</kw>
+<tag>Windows</tag>
+<tag>wip</tag>
+<status status="FAIL" starttime="20210803 21:35:23.877" endtime="20210803 21:35:25.818">Evaluating expression 'json.loads($file)' failed: JSONDecodeError: Invalid control character at: line 17 column 71 (char 480)</status>
+</test>
+<kw name="Driver Teardown" library="Zoomba.DesktopLibrary" type="TEARDOWN">
+<doc>Stops the WinAppDriver.</doc>
+<status status="PASS" starttime="20210803 21:35:25.823" endtime="20210803 21:35:25.887"/>
+</kw>
+<doc>Zoomba Desktop Library Tests.</doc>
+<status status="FAIL" starttime="20210803 21:35:20.585" endtime="20210803 21:35:25.887"/>
+</suite>
+<statistics>
+<total>
+<stat pass="0" fail="1" skip="0">All Tests</stat>
+</total>
+<tag>
+<stat pass="0" fail="1" skip="0">Windows</stat>
+<stat pass="0" fail="1" skip="0">wip</stat>
+</tag>
+<suite>
+<stat pass="0" fail="1" skip="0" id="s1" name="zoombaEmail">zoombaEmail</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

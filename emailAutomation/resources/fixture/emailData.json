@@ -1,0 +1,25 @@
+{
+    "sentTo": [
+        {
+            "name": "Jeremias Araújo",
+            "email": "jqcaraujo@gmail.com"
+        },
+        {
+            "name": "Jeremias Queiroga",
+            "email": "jqcaraujo@hotmail.com"
+        },
+        {
+            "name": "Jeremias Queiroga da Costa Araújo",
+            "email": "jeremias.araujo@db1.com.br"
+        }
+    ],
+    "subject": "Automacao de Envio de Email por Zoomba",
+    "body": ["Muito obrigado por ter assistido a palestra sobre zoomba.",
+             "Segue abaixo o link do gitHub no qual poderás ter acesso ao código fonte a essa apresentação",
+             "Link: https://github.com/jqueiroga/zoomba-robotFramework",
+             "Jeremias Araújo",
+             "Palestrante TDC",
+             "Trilha Testes" ,
+             "TDC TRANSFORMATION 2021"
+            ]
+}
