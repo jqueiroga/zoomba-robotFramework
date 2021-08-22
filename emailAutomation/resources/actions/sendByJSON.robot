@@ -6,7 +6,7 @@ Fill List To Sent
     [Arguments]     ${listToSend}
 
     Wait For And Input Text     accessibility_id=SearchBox           ${listToSend}          5
-    Send Keys                '\ue004' 
+
 
 Fill Subject TextBox
     [Arguments]     ${subjectText}
@@ -17,7 +17,13 @@ Fill Email Body
     [Arguments]     ${bodyText}
     
     FOR   ${line}   IN   @{bodyText}
-        Input Text      name=Mensagem                       ${line}
+        IF    "${line}" == "ENTER"
+            #Pressing Enter Key
+            Send Keys       '\ue007'
+        ELSE 
+            Input Text      name=Mensagem                       ${line}
+            
+        END
     END
    
 Click Send Email
@@ -39,15 +45,16 @@ Send New Email By JSON
         
         Click Send Email
 
+        Sleep   2 
+
 Create Email List To Send By List
     [Arguments]     ${listToSend}
 
     ${emails}           Set Variable      ${listToSend['sentTo']}  
     ${emailsToSent}     Set Variable      ${EMPTY}
 
-    FOR   ${item}   IN   @{emails}
-        ${emailsToSent}=    Catenate       ${emailsToSent}        ${item['email']}/
-
+    FOR   ${item}   IN   @{emails}    
+        ${emailsToSent}=    Catenate       ${emailsToSent}        ${item['email']};
     END
        
     [Return]             ${emailsToSent}

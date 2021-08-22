@@ -15,11 +15,18 @@
     ],
     "subject": "Automacao de Envio de Email por Zoomba",
     "body": ["Muito obrigado por ter assistido a palestra sobre zoomba.",
-             "Segue abaixo o link do gitHub no qual poderás ter acesso ao código fonte a essa apresentação",
-             "Link: https://github.com/jqueiroga/zoomba-robotFramework",
-             "Jeremias Araújo",
-             "Palestrante TDC",
-             "Trilha Testes" ,
-             "TDC TRANSFORMATION 2021"
-            ]
+        "ENTER",
+        "Segue abaixo o link do gitHub no qual poderás ter acesso ao código fonte a essa apresentação",
+        "ENTER",
+        "Link: https://github.com/jqueiroga/zoomba-robotFramework",
+        "ENTER",
+        "ENTER",
+        "Jeremias Araújo",
+        "ENTER",
+        "Palestrante TDC",
+        "ENTER",
+        "Trilha Testes" ,
+        "ENTER",
+        "TDC TRANSFORMATION 2021"
+       ]
 }

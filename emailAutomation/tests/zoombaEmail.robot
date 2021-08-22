@@ -37,6 +37,6 @@ Enviando Novo Email Com Massa de Dados Via JSON
     Wait Until Element Contains       class=ListItem        jeremias.araujo@db1.com
     Wait For And Click Element        accessibility_id=NewButton
 
-    Send New Email by JSON       emailData.json 
+    Send New Email by JSON          emailData.json 
 
 
